@@ -3,9 +3,12 @@
                  [org.clojure/clojurescript "1.7.170"]
                  [sablono "0.3.6"]]
   :plugins [[lein-figwheel "0.5.0-1"]]
-  :clean-targets [:target-path "out"]
+  :clean-targets [:target-path "out" "resources/public/cljs"]
   :cljsbuild {:builds [{:id "dev"
                         :source-paths ["src"]
                         :figwheel true
-                        :compiler {:main "hello-seymore.core"}}]}
-  :figwheel {:css-dirs ["css"]})
+                        :compiler {:main hello-seymore.core 
+                                   :asset-path "cljs/out"
+                                   :output-to  "resources/public/cljs/main.js"
+                                   :output-dir "resources/public/cljs/out"}}]}
+  :figwheel {:css-dirs ["resources/public/css"]})
